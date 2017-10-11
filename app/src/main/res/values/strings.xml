@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">UTAFood</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Saved values -->
+    <string-array name="pref_foodTabs">
+        <item>Pääkampus</item>
+        <item>Minerva</item>
+        <item>Linna</item>
+    </string-array>
+    <string-array name="pref_foodTabs_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

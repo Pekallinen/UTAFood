@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/pref_foodTabs"
+        android:entryValues="@array/pref_foodTabs_values"
+        android:key="default_tab"
+        android:summary="%s"
+        android:title="Default tab" />
+
+</PreferenceScreen>
