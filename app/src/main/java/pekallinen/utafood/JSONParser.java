@@ -1,6 +1,8 @@
 package pekallinen.utafood;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,8 +14,8 @@ public class JSONParser {
     // Pääkampus
     public static ArrayList<Food> PaakampusJSON(String JSONString) throws JSONException {
         // Format the input file a bit
-        JSONString = JSONString.substring(7, JSONString.length()-2);
-        JSONString = JSONString.replace("\\", "");
+        JSONString = JSONString.substring(6, JSONString.length()-2);
+        JSONString = JSONString.replace("\\\"", "\"");
 
         JSONObject rootJSON = new JSONObject(JSONString);
         JSONArray MealOptions = rootJSON.getJSONArray(("MealOptions"));
