@@ -53,8 +53,9 @@ public class FoodFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: Save foodlists somewhere instead of redownloading JSON data after rotation
         // Retain the fragment when changing orientation
-        setRetainInstance(true);
+        // setRetainInstance(true);
 
         mFoods = new ArrayList<>();
         mAdapter = new FoodAdapter(getContext(), mFoods);

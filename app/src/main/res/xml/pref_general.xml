@@ -9,4 +9,10 @@
         android:summary="%s"
         android:title="Default tab" />
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="use_dark_theme"
+        android:summary="Use dark theme"
+        android:title="Dark theme" />
+
 </PreferenceScreen>
