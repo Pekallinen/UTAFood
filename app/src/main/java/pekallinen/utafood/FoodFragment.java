@@ -28,7 +28,7 @@ public class FoodFragment extends Fragment {
                     "GetMenuByWeekday?KitchenId=13&MenuTypeId=60&Week=WEEKNUMBER&WeekDay=WEEKDAY" +
                     "&lang='fi'&format=json",
             "https://www.amica.fi/modules/json/json/Index?costNumber=0815&language=fi",
-            "http://www.sodexo.fi/ruokalistat/output/daily_json/92/YEAR/MONTH/DAY/fi"};
+            "https://www.sodexo.fi/ruokalistat/output/daily_json/92/YEAR/MONTH/DAY/fi"};
 
     private static final int PAAKAMPUS = 0;
     private static final int MINERVA = 1;

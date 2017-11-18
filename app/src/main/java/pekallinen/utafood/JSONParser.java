@@ -42,6 +42,9 @@ public class JSONParser {
 
             foodList.add(new Food(foodName, foodIngredients));
         }
+        if(foodList.size() == 0) {
+            foodList.add(new Food("[CLOSED]", ""));
+        }
         return foodList;
     }
 
@@ -77,6 +80,10 @@ public class JSONParser {
 
             foodList.add(new Food(foodName, foodIngredients));
         }
+
+        if(foodList.size() == 0) {
+            foodList.add(new Food("[CLOSED]", ""));
+        }
         return foodList;
     }
 
@@ -102,6 +109,9 @@ public class JSONParser {
             }
 
             foodList.add(new Food(foodName, foodIngredients));
+        }
+        if(foodList.size() == 0) {
+            foodList.add(new Food("[CLOSED]", ""));
         }
         return foodList;
     }
