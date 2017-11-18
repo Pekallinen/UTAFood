@@ -1,6 +1,9 @@
 package pekallinen.utafood;
 
-public class Food {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Food implements Parcelable {
     private String mName;
     private String mIngredients;
 
@@ -24,4 +27,33 @@ public class Food {
     public void setIngredients(String ingredients) {
         mIngredients = ingredients;
     }
+
+    protected Food(Parcel in) {
+        mName = in.readString();
+        mIngredients = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mName);
+        dest.writeString(mIngredients);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Food> CREATOR = new Parcelable.Creator<Food>() {
+        @Override
+        public Food createFromParcel(Parcel in) {
+            return new Food(in);
+        }
+
+        @Override
+        public Food[] newArray(int size) {
+            return new Food[size];
+        }
+    };
 }

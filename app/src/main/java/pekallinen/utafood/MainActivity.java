@@ -24,6 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Enable dark theme based on user setting
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getBoolean("use_dark_theme", true)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        // Default calls
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -41,17 +51,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mPager);
 
         // Open the default tab
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         int defaultTab = Integer.parseInt(sharedPreferences.getString("default_tab", "0"));
         mPager.setCurrentItem(defaultTab);
-
-        // Enable dark theme based on user setting
-        if(sharedPreferences.getBoolean("use_dark_theme", false)) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
     }
 
     @Override

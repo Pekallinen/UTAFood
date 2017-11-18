@@ -30,6 +30,8 @@ public class FoodFragment extends Fragment {
             "https://www.amica.fi/modules/json/json/Index?costNumber=0815&language=fi",
             "https://www.sodexo.fi/ruokalistat/output/daily_json/92/YEAR/MONTH/DAY/fi"};
 
+    private static final String KEY_FOODLIST = "foodlist";
+
     private static final int PAAKAMPUS = 0;
     private static final int MINERVA = 1;
     private static final int LINNA = 2;
@@ -53,15 +55,17 @@ public class FoodFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: Save foodlists somewhere instead of redownloading JSON data after rotation
-        // Retain the fragment when changing orientation
-        // setRetainInstance(true);
+        if(savedInstanceState != null) {
+            mFoods = (ArrayList<Food>) savedInstanceState.getSerializable(KEY_FOODLIST);
+            mAdapter = new FoodAdapter(getContext(), mFoods);
+        }
+        else {
+            mFoods = new ArrayList<>();
+            mAdapter = new FoodAdapter(getContext(), mFoods);
 
-        mFoods = new ArrayList<>();
-        mAdapter = new FoodAdapter(getContext(), mFoods);
-
-        DownloadJSONTask downloadJSONTask = new DownloadJSONTask();
-        downloadJSONTask.execute(getArguments().getInt(RESTAURANT_ID));
+            DownloadJSONTask downloadJSONTask = new DownloadJSONTask();
+            downloadJSONTask.execute(getArguments().getInt(RESTAURANT_ID));
+        }
     }
 
     @Override
@@ -72,6 +76,12 @@ public class FoodFragment extends Fragment {
         listView.setAdapter(mAdapter);
 
         return v;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(KEY_FOODLIST, mFoods);
     }
 
     private class DownloadJSONTask extends AsyncTask<Integer, Void, ArrayList<Food>> {
